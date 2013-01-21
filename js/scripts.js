@@ -119,6 +119,7 @@ function end(result) {
 		
 		result = (typeof result === "undefined") ? 0 : result;
 		reading = false; buzzed = false; ended = true;
+		$('#question').html(question);
 		
 		if (result == 0) {
 			$('#bottom').html('<li class="active" id="answer">Sorry! You timed out of the question.</li>');
