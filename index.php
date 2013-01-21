@@ -20,7 +20,7 @@
 
 	<div class="navbar">
 		<div class="navbar-inner">
-			<a class="brand">Blurt</a>
+			<a class="brand" href="">Blurt</a>
 			<p class="navbar-text pull-right">Get some Science Bowl skills. Fast.</div>
 		</div>
     </div>

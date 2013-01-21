@@ -116,10 +116,10 @@ function end(result) {
 		$('#negs').html(String(negs));
 		$('#ratio').html(ratio);
 		
-		$('#start').show();
-		$('#resume').show().attr('disabled', true);
-		$('#buzz').hide();
-		$('#pause').hide().attr('disabled', false);
+		$('#start').show().attr('disabled', false);
+		$('#pause').show().attr('disabled', true);
+		$('#resume').hide().attr('disabled', false);
+		$('#buzz').hide().attr('disabled', false);
 		
 		$('.level21').css('width', '100%');
 		$('.level22').css('width', '0%');
@@ -142,7 +142,6 @@ $(document).ready(function() {
 		ended = false; position = 0;
 		$('.alert').remove()
 		
-		$('#resume').attr('disabled', false);
 		$('.bar-info').css('width', '0%');
 		$('.bar-success').css('width', '100%');
 		
@@ -169,6 +168,9 @@ $(document).ready(function() {
 			$('#author').html('Author: ' + author);
 			$('#uploader').html('Uploader: ' + uploader);
 			
+			$('#pause').attr('disabled', false);
+			$('#start').attr('disabled', true);
+			
 			$('#start').hide();
 			$('#buzz').show();
 			
@@ -177,22 +179,23 @@ $(document).ready(function() {
 	});
 	
 	$('#pause').click(function(){
-		if (reading == true){
-			reading = false;
-			$('#pause').hide();
-			$('#resume').show();
-		}
+		reading = false;
+		$('#pause').hide().attr('disabled', true);
+		$('#resume').show().attr('disabled', false);
+		$('#buzz').show().attr('disabled', true);
 	});
 	
 	$('#resume').click(function(){
 		reading = true; append();
-		$('#pause').show();
-		$('#resume').hide();
+		$('#resume').hide().attr('disabled', true);
+		$('#pause').show().attr('disabled', false);
+		$('#buzz').show().attr('disabled', false);
 	});
 	
 	$('#buzz').click(function(){
-		if (buzzed == false){
-			$('#pause').attr('disabled', true);
+		$('#pause').attr('disabled', true);
+			$('#buzz').attr('disabled', true);
+			
 			buzzed = true;
 			reading = false;
 			
@@ -261,7 +264,6 @@ $(document).ready(function() {
 						end(1);
 					}
 				}
-			});
-		}
+		});
 	});
 });
