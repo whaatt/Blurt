@@ -121,6 +121,14 @@ function end(result) {
 		reading = false; buzzed = false; ended = true;
 		$('#question').html(question);
 		
+		if (type == 'Multiple Choice') {
+			$('#question').html(question + '<br><br>W: ' + W + '<br>X: ' + X + '<br>Y: ' + Y + '<br>Z: ' + Z);
+		}
+		
+		else {
+			$('#question').html(question);
+		}
+		
 		if (result == 0) {
 			$('#bottom').html('<li class="active" id="answer">Sorry! You timed out of the question.</li>');
 			if (position != words.length){
@@ -185,6 +193,12 @@ $(document).ready(function() {
 	$('#start').click(function() {
 		ended = false; position = 0;
 		$('.alert').remove()
+					
+		$('#pause').attr('disabled', false);
+		$('#start').attr('disabled', true);
+		
+		$('#start').hide();
+		$('#buzz').show();
 		
 		$('.bar-info').css('width', '0%');
 		$('.bar-success').css('width', '100%');
@@ -211,12 +225,6 @@ $(document).ready(function() {
 			
 			$('#author').html('Author: ' + author);
 			$('#uploader').html('Uploader: ' + uploader);
-			
-			$('#pause').attr('disabled', false);
-			$('#start').attr('disabled', true);
-			
-			$('#start').hide();
-			$('#buzz').show();
 			
 			read();
 		});
