@@ -63,10 +63,10 @@
 				</div>
 				
 				<div class="well pagination-centered">
-					<button class="btn btn-primary" style="width: 47%" id="start">Start</button>
-					<button class="btn btn-danger" style="width: 47%; display: none;" id="buzz">Buzz</button>
-					<button class="btn btn-info pull-right" style="width: 47%" id="pause">Pause</button>
-					<button class="btn btn-success pull-right" style="width: 47%; display: none;" id="resume">Resume</button>
+					<button class="btn btn-primary" style="width: 47%" id="start"><u>S</u>tart</button>
+					<button class="btn btn-danger" style="width: 47%; display: none;" id="buzz"><u>B</u>uzz</button>
+					<button class="btn btn-info pull-right" style="width: 47%" id="pause"><u>P</u>ause</button>
+					<button class="btn btn-success pull-right" style="width: 47%; display: none;" id="resume"><u>R</u>esume</button>
 				</div>
 				
 				<div class="well thumbnail pagination-centered" id="score">
