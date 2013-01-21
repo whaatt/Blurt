@@ -75,7 +75,7 @@
 				</div>
 				
 				<div class="well thumbnail pagination-centered" id="score">
-					Please report any questions, by ID, if they seem malformed. Thank you!
+					Please report any malformed questions by ID. All questions originally scraped from Scibowl.com. Thank you!
 				</div>
 			</div>
 		</div>

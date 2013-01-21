@@ -35,6 +35,48 @@ function levenshtein(str1, str2) {
 	return d[m][n];
 }
 
+function diff(a, b) {
+	var seen = [], diff = [];
+	for ( var i = 0; i < b.length; i++)
+		seen[b[i]] = true;
+	for ( var i = 0; i < a.length; i++)
+		if (!seen[a[i]])
+			diff.push(a[i]);
+	return diff;
+}
+
+function checkAnswer(trial, actual) {
+	trial = trial.toLowerCase().split(' ');
+	actual = actual.toLowerCase().split(' ');
+	
+	particles = ['the', 'and', 'for', 'nor', 'but', 'yet', 'prompt', 'accept'];
+	
+	for (i = 0; i < trial.length; i++){
+		if (trial[i].length < 3){
+			particles.push(trial[i]);
+		}
+	}
+	
+	for (i = 0; i < actual.length; i++){
+		if (actual[i].length < 3){
+			particles.push(actual[i]);
+		}
+	}
+	
+	trial = diff(trial, particles);
+	actual = diff(actual, particles);
+	
+	for (i = 0; i < actual.length; i++){
+		for (j = 0; j < trial.length; j++){
+			if (levenshtein(actual[i], trial[j]) <= Math.round(0.4 * actual[i].length)){
+				return true;
+			}
+		}
+	}
+	
+	return false;
+}
+
 function read() {
 	words = words.split(' ');
 	reading = true; append();
@@ -256,7 +298,7 @@ $(document).ready(function() {
 				}
 				
 				if (type == 'Short Answer'){
-					if (levenshtein(attempt, answer.toLowerCase()) < .25 * answer.length){
+					if (checkAnswer(attempt, answer)){
 						end(2)
 					}
 					
